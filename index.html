@@ -26,9 +26,24 @@ var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Const
     // At least Safari 3+: "[object HTMLElementConstructor]"
 var isChrome = !!window.chrome && !isOpera;              // Chrome 1+
 var isIE = /*@cc_on!@*/false || !!document.documentMode;   // At least IE6
-var bIsMobile = (navigator.userAgent.toLowerCase().indexOf("mobile") != -1 && navigator.userAgent.toLowerCase().indexOf("ipad") == -1);
+function detect() {
+       var uagent = navigator.userAgent.toLowerCase();
+       var mobile = false;
+       var search_strings = [
+           "iphone",
+           "ipod",
+           "ipad",
+           "blackberry",
+           "palm"
+       ];
+       for (i in search_strings) {
+           if (uagent.search(search_strings[i]) > -1) mobile = true;
+       }
+       return mobile;
+   }
+  
 
-if (bIsMobile) {
+if (detect()) {
 window.location="mobi.html";
 } else if (isChrome ) {
 window.location="anogstatic.html";
