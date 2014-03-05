@@ -16,7 +16,7 @@
 </script>
 </head>
 <body>
-
+<a href="" rel="publisher">Loading OTDTE.com</a>
 
 <script type="text/javascript">
 var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
@@ -26,10 +26,11 @@ var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Const
     // At least Safari 3+: "[object HTMLElementConstructor]"
 var isChrome = !!window.chrome && !isOpera;              // Chrome 1+
 var isIE = /*@cc_on!@*/false || !!document.documentMode;   // At least IE6
+var bIsMobile = (navigator.userAgent.toLowerCase().indexOf("mobile") != -1 && navigator.userAgent.toLowerCase().indexOf("ipad") == -1);
 
-
-
-if (isChrome ) {
+if (bIsMobile) {
+window.location="mobi.html";
+} else if (isChrome ) {
 window.location="anogstatic.html";
 } else {
 
